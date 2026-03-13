@@ -13,7 +13,8 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 # --- MAPEAMENTO ORM ---
-
+#Uso o back_populates para que o dado seja atualizado localmente em ambas as relações, ou seja, se uso um adocao.animal = gato
+# sera atualizado instantaneo não só na classe animal, mas também na classe adocao. 
 class Adotante(Base):
     __tablename__ = 'adotante'
     id_adotante = Column(Integer, primary_key=True)

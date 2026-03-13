@@ -1,5 +1,4 @@
-from models import SessionLocal, Adotante, Animal, Adocao, HistoricoAnimal, Reserva
-from datetime import datetime, timedelta
+from models import SessionLocal, Animal, Adotante, Adocao, Reserva
 
 def main():
     db = SessionLocal()
@@ -18,9 +17,33 @@ def main():
     novo_animal2 = Animal(nome="Garfield", especie="Gato", raca="Persa", sexo="M", porte="M", status="DISPONIVEL")
     novo_animal3 = Animal(nome="Sombra", especie="Gato", raca="SRD", sexo="M", porte="P", status="DISPONIVEL")
     
-    db.add_all([novo_animal1, novo_animal2, novo_animal3])
+    novo_adotante = Adotante(
+        nome="Jefferson Rocha", 
+        email="jefferson@email.com", 
+        idade=22, 
+        tipo_moradia="Apartamento", 
+        area_util_m2=75.0
+    )
+
+
+    db.add_all([novo_animal1, novo_animal2, novo_animal3, novo_adotante])
     db.commit()
-    print("-> Pets inseridos com sucesso!\n")
+
+    nova_adocao_orm = Adocao(
+        id_animal=novo_animal1.id_animal,
+        id_adotante=novo_adotante.id_adotante,
+        taxa_adocao=50.0,
+        estrategia_taxa="Pix",
+        contrato_texto="Contrato assinado digitalmente via sistema ORM."
+    )
+    novo_animal1.status = "ADOTADO"
+    
+    db.add(nova_adocao_orm)
+    db.commit()
+
+    print(f"-> Pets e Adotante '{novo_adotante.nome}' inseridos!")
+    print(f"-> Relacionamento criado: {novo_adotante.nome} adotou {novo_animal1.nome}.\n")
+
 
     # 2. READ (Listando com ordenação decrescente por ID)
     print("[CRUD] 2. READ - Listando os últimos pets cadastrados:")
