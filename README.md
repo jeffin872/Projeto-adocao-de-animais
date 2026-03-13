@@ -32,7 +32,9 @@ python -m venv venv
 
 # Instalar dependências
 pip install sqlalchemy psycopg2-binary
-3. Ajuste de Conexão
+
+3. Ajuste de Conexão:
+
 No arquivo models.py, certifique-se de que a DATABASE_URL está correta:
 postgresql://usuario:senha@localhost:5432/nome_do_banco
 
@@ -74,3 +76,28 @@ main.py: Execução das operações CRUD e Consultas ORM.
 script_banco.sql: Script DDL/DML para estruturação do PostgreSQL.
 
 requirements.txt: Lista de bibliotecas necessárias.
+
+🐾 Sistema de Adoção de Animais (Implementação ORM)
+Este projeto foi desenvolvido para organizar e automatizar o dia a dia de uma ONG ou centro de adoção. Em vez de lidar com códigos complexos de banco de dados o tempo todo, utilizamos uma tecnologia chamada ORM (SQLAlchemy), que permite ao sistema "conversar" com o banco de dados de uma forma muito mais natural e eficiente.
+
+O sistema controla desde o cadastro básico dos bichinhos até o histórico final de quem os adotou, garantindo que nenhum dado seja perdido e que a comunicação entre o aplicativo e o PostgreSQL seja perfeita.
+
+🚀 O que o sistema faz na prática?
+Ao rodar a aplicação, ela executa automaticamente uma série de tarefas que simulam o uso real do sistema:
+
+Cadastro Inteligente (Create): Registra novos animais (como cães e gatos) e novos adotantes no banco de dados de uma só vez.
+
+Busca e Listagem (Read): Organiza e exibe os animais cadastrados, permitindo saber rapidamente quem está disponível para ganhar um novo lar.
+
+Atualização de Status (Update): Permite mudar informações em tempo real — como colocar um animal em quarentena para cuidados médicos ou marcar como adotado.
+
+Gestão de Registros (Delete): Remove cadastros que não são mais necessários, mantendo o banco de dados limpo e atualizado.
+
+Relatórios Automáticos (Relacionamentos): O sistema consegue "ligar os pontos" sozinho. Ele identifica quem adotou qual animal, quais pets estão prometidos em reservas e gera relatórios prontos para a administração da ONG.
+
+📊 Demonstração do Funcionamento
+Abaixo, você pode conferir o log de execução do sistema. Nele, é possível ver o momento exato em que os animais são inseridos, a alteração de status do pet "Garfield" e o processamento das consultas que cruzam os dados de adotantes e animais:
+
+![alt text](<Prints das consultas 1.png>)
+
+![alt text](<Print das consultas 2.png>)
