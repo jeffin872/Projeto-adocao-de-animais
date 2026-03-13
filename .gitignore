@@ -1,0 +1,24 @@
+# Ambientes Virtuais (Pasta pesada que não deve ir pro Git)
+venv/
+env/
+.venv/
+
+# Arquivos de Configuração Sensível (Onde fica sua senha do banco)
+.env
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Configurações do VS Code
+.vscode/
+
+# Distribuição/Pacotes
+dist/
+build/
+*.egg-info/
+
+# Logs e arquivos temporários
+*.log
+.DS_Store
